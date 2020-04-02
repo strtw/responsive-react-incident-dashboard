@@ -7,8 +7,14 @@ class Dashboard extends Component{
     }
     render(){
         return(
-           <>
-           </>
+            <div className="dashboard">
+                <div className="card-container">
+                    <Card title={"Open"} value={10}/>
+                    <Card title={"In Progress"} value={10}/>
+                    <Card title={"Resolved"} value={10}/>
+                    <Card title={"Closed"} value={10}/>
+                 </div>
+            </div>
         )
     }
 }
