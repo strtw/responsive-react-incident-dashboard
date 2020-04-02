@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
 import Card from './Card.js'
+import {fetchIncidents} from '../utils/dataTransfer'
 
 class Dashboard extends Component{
     constructor(props){
         super(props)
+        this.state = {
+            incidents:null
+        }
+        this.fetchIncidents = fetchIncidents.bind(this);
     }
+
+    componentDidMount(){
+      this.fetchIncidents();
+    }
+
     render(){
         return(
             <div className="dashboard">
