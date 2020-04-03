@@ -16,6 +16,6 @@ export function fetchIncidents (callback){
             throw errmess;
         })
         .then(response => response.json())
-        .then(incidents => this.setState({incidents:incidents},callback) )
+        .then(incidents => this.setState({incidents:incidents, isLoading:false},callback) )
         .catch(error => console.log(error.message))
 }
