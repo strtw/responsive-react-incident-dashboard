@@ -59,6 +59,7 @@ class Dashboard extends Component{
         }else{
             return(
                 <div className="dashboard">
+                    <h5 className="dashboard__subheader">At A Glance</h5>
                     <div className="card-container">
                         <Card title={"All Incidents"} value={this.state.incidents.length} onClick={(event) => this.handleClick(event)}/>
                         <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event)}/>
@@ -67,9 +68,9 @@ class Dashboard extends Component{
                         <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)}/>
                      </div>
                      <div className="data-table-container">
-                         <h4>{this.state.filteredBy}
-                            <span>{this.state.filteredBy == "All Incidents" ? this.state.incidents.length : this.state[this.state.filteredBy]}</span>
-                         </h4>
+                         <h5 className="dashboard__filter-summary">{this.state.filteredBy}
+                            <span className="dashboard__filter-summary-count">{this.state.filteredBy == "All Incidents" ? this.state.incidents.length : this.state[this.state.filteredBy]}</span>
+                         </h5>
                          <div className="data-table__container">
                             <DataTable data={this.filterIncidents()}
                                 columnMap={{
