@@ -52,6 +52,7 @@ class Dashboard extends Component{
       this.fetchIncidents(this.setIncidentCountByType);
     }
     render(){
+       // const width = 
         if(this.state.isLoading){
            return(
              <div>Loading...</div>
@@ -60,12 +61,22 @@ class Dashboard extends Component{
             return(
                 <div className="dashboard">
                     <h5 className="dashboard__subheader">At A Glance</h5>
-                    <div className="card-container">
-                        <Card title={"All Incidents"} value={this.state.incidents.length} onClick={(event) => this.handleClick(event)}/>
-                        <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event)}/>
-                        <Card title={"In Progress"} value={this.state['In Progress']} onClick={(event) => this.handleClick(event)}/>
-                        <Card title={"Resolved"} value={this.state['Resolved']} onClick={(event) => this.handleClick(event)}/>
-                        <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)}/>
+                    <div className="dashboard__cards">
+                        <div className="card__container">
+                            <Card title={"All Incidents"} value={this.state.incidents.length} onClick={(event) => this.handleClick(event)}/>
+                        </div>
+                        <div className="card__container">
+                            <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event) }/>
+                        </div>
+                        <div className="card__container">
+                             <Card title={"In Progress"} value={this.state['In Progress']} onClick={(event) => this.handleClick(event)}/>
+                        </div>
+                        <div className="card__container">
+                            <Card title={"Resolved"} value={this.state['Resolved']} onClick={(event) => this.handleClick(event)} />
+                        </div>
+                        <div className="card__container">
+                            <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)} />
+                        </div>
                      </div>
                      <div className="data-table-container">
                          <h5 className="dashboard__filter-summary">{this.state.filteredBy}
