@@ -48,12 +48,14 @@ body{
 .data-table__container {
   margin: auto;
   width: 96%;
-  height: 64vh;
+  height: 60vh;
   overflow-y: scroll;
+  border-bottom:1px solid rgba(0,0,0,.125);
 }
 
 .data-table{
   border-collapse: collapse;
+  position:relative;
   width:100%;
   table-layout: fixed;
   width: 100%;
@@ -74,12 +76,11 @@ body{
 }
 
 .data-table__header{
-  text-align:left;
-}
-
-.data-table__header-row{
-  border-top: 1px solid rgba(0,0,0,.125);
-  border-bottom:1px solid rgba(0,0,0,.125);
+  text-align: left;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 0px 1px 0px grey;
+  background-color: white;
 }
 
 .dashboard__subheader, .dashboard__filter-summary{
