@@ -11,21 +11,20 @@ body{
   margin: auto;
   flex-direction: row;
   flex-wrap: wrap;
+  @media screen and (max-width:484px){
+    justify-content: flex-start;
+  }
 }
-
-
 
 .card__container{
   width:18%;
-  /*margin:20px;*/
-  @media screen and (max-width:2020px){
-    width:17%;
-  }
+  margin-bottom:20px;
   @media screen and (max-width:1468px){
-    width:17%;
+    width:19%;
   }
-  @media screen and (max-width:1344px){
-    width:16%;
+  @media screen and (max-width:484px){
+    width: 47%;
+    margin: 4px;
   }
 }
 
@@ -45,7 +44,6 @@ body{
   padding: 10px;
   margin:0px;
 }
-
 
 .data-table__container {
   margin: auto;
@@ -78,10 +76,10 @@ body{
 }
 
 .dashboard__subheader, .dashboard__filter-summary{
-  margin-top:0;
+  margin-top: 0; 
   position: relative;
-  left: 30px;
-  top: 20px;
+  width: 96%;
+  margin: 15px auto;
 }
 
 .dashboard__filter-summary-count{
