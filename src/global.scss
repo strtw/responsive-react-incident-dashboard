@@ -46,7 +46,7 @@ body{
 }
 
 .data-table__container {
-  margin: auto;
+  margin: 0 auto 20px;
   width: 96%;
   height: 60vh;
   overflow-y: scroll;
@@ -64,8 +64,8 @@ body{
   }
 }
 
-.data-table__cell{
-  padding: 8px 14px 8px 0;
+.data-table__cell, .data-table__header{
+  padding: 8px 14px 8px 2px;
 }
 
 .data-table__row:nth-child(odd) {
