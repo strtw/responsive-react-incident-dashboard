@@ -15,7 +15,7 @@ export default function DataTable(props){
 
     function RenderCells(props){
         return props.columns.map((column, index)=>{
-        return <td key={props.data[column]}>{props.data[column]}</td>
+        return <td className="data-table__cell" key={props.data[column]}>{props.data[column]}</td>
         })
     }
 

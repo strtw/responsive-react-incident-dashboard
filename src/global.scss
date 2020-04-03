@@ -48,7 +48,7 @@ body{
 .data-table__container {
   margin: auto;
   width: 96%;
-  height: 500px;
+  height: 64vh;
   overflow-y: scroll;
 }
 
@@ -57,6 +57,13 @@ body{
   width:100%;
   table-layout: fixed;
   width: 100%;
+  @media screen and (max-width:785px){
+    table-layout: auto;
+  }
+}
+
+.data-table__cell{
+  padding: 8px 14px 8px 0;
 }
 
 .data-table__row:nth-child(odd) {
