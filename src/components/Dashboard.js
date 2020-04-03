@@ -9,26 +9,43 @@ class Dashboard extends Component{
         this.state = {
             isLoading:true,
             incidents:null,
-            stateOpen:null,
-            stateInProgress:null,
-            stateResolved:null,
-            stateClosed:null
+            'Open':null,
+            'In Progress':null,
+            'Resolved':null,
+            'Closed':null,
+            filteredBy:null
         }
         this.fetchIncidents = fetchIncidents.bind(this);
-        this.setStateCount = this.setStateCount.bind(this);
     }
    
-    setStateCount(stateString,stateType){
-        var stateArray = this.state.incidents.filter(incident => incident.state === stateString);
+    setStateCount(stateType){
+        var stateArray = this.state.incidents.filter(incident => incident.state === stateType);
         var length =  stateArray.length;
         this.setState({[stateType]:length})
     }
 
     setIncidentCountByType(){
-        this.setStateCount('Open','stateOpen');
-        this.setStateCount('In Progress','stateInProgress');
-        this.setStateCount('Resolved','stateResolved');
-        this.setStateCount('Closed','stateClosed');
+        this.setStateCount('Open','Open');
+        this.setStateCount('In Progress','In Progress');
+        this.setStateCount('Resolved','Resolved');
+        this.setStateCount('Closed','Closed');
+    }
+
+    handleClick(event){
+        if(event.currentTarget.getElementsByClassName(".card")){
+            var cardType = event.currentTarget.querySelector(".card__title").innerHTML;
+            this.setState({filteredBy:cardType})
+        }
+    }
+
+    filterIncidents(){
+        var result; 
+        if(this.state.filteredBy == null){
+            result = this.state.incidents;
+        }else{
+            result = this.state.incidents.filter(incident => incident.state === this.state.filteredBy);
+        }
+        return result;
     }
 
     componentDidMount(){
@@ -43,13 +60,16 @@ class Dashboard extends Component{
             return(
                 <div className="dashboard">
                     <div className="card-container">
-                        <Card title={"Open"} value={this.state.stateOpen}/>
-                        <Card title={"In Progress"} value={this.state.stateInProgress}/>
-                        <Card title={"Resolved"} value={this.state.stateResolved}/>
-                        <Card title={"Closed"} value={this.state.stateClosed}/>
+                        <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event)}/>
+                        <Card title={"In Progress"} value={this.state['In Progress']} onClick={(event) => this.handleClick(event)}/>
+                        <Card title={"Resolved"} value={this.state['Resolved']} onClick={(event) => this.handleClick(event)}/>
+                        <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)}/>
                      </div>
                      <div className="data-table-container">
-                        <DataTable data={this.state.incidents}
+                         <h4>{this.state.filteredBy == null ? "All incidents" : this.state.filteredBy}
+                            <span>{this.state.filteredBy == null ? this.state.incidents.length : this.state[this.state.filteredBy]}</span>
+                         </h4>
+                        <DataTable data={this.filterIncidents()}
                             columnMap={{
                                 "number":"Number",
                                 "priority":"Priority",
