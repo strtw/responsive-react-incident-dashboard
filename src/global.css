@@ -40,7 +40,12 @@ body{
   width: 100%;
 }
 
-.data-table__row:nth-child(odd) {background-color: #ffffff;}
+.data-table__row:nth-child(odd) {
+  background-color: #ffffff;
+}
+.data-table__row td:nth-child(1) {
+  color:#0068D9;
+}
 
 .data-table__header{
   text-align:left;
