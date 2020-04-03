@@ -34,6 +34,8 @@ body{
 .data-table{
   border-collapse: collapse;
   width:100%;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .data-table__row:nth-child(odd) {background-color: #ffffff;}
