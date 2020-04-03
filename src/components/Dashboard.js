@@ -13,7 +13,7 @@ class Dashboard extends Component{
             'In Progress':null,
             'Resolved':null,
             'Closed':null,
-            filteredBy:null
+            filteredBy:"All Incidents"
         }
         this.fetchIncidents = fetchIncidents.bind(this);
     }
@@ -40,7 +40,7 @@ class Dashboard extends Component{
 
     filterIncidents(){
         var result; 
-        if(this.state.filteredBy == null){
+        if(this.state.filteredBy == 'All Incidents'){
             result = this.state.incidents;
         }else{
             result = this.state.incidents.filter(incident => incident.state === this.state.filteredBy);
@@ -60,14 +60,15 @@ class Dashboard extends Component{
             return(
                 <div className="dashboard">
                     <div className="card-container">
+                        <Card title={"All Incidents"} value={this.state.incidents.length} onClick={(event) => this.handleClick(event)}/>
                         <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event)}/>
                         <Card title={"In Progress"} value={this.state['In Progress']} onClick={(event) => this.handleClick(event)}/>
                         <Card title={"Resolved"} value={this.state['Resolved']} onClick={(event) => this.handleClick(event)}/>
                         <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)}/>
                      </div>
                      <div className="data-table-container">
-                         <h4>{this.state.filteredBy == null ? "All incidents" : this.state.filteredBy}
-                            <span>{this.state.filteredBy == null ? this.state.incidents.length : this.state[this.state.filteredBy]}</span>
+                         <h4>{this.state.filteredBy}
+                            <span>{this.state.filteredBy == "All Incidents" ? this.state.incidents.length : this.state[this.state.filteredBy]}</span>
                          </h4>
                         <DataTable data={this.filterIncidents()}
                             columnMap={{
