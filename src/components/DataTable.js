@@ -9,7 +9,7 @@ export default function DataTable(props){
     function setHeader(){
         var headers = getColumnHeaders();
         return headers.map((header, index)=>{
-        return <th key={header}>{header}</th>
+        return <th className="data-table__header" key={header}>{header}</th>
         })
     }
 
@@ -28,17 +28,17 @@ export default function DataTable(props){
         var columns = implementColumnMap();
         return items.map((row, index)=>{
             if(row['sys_created_on']){//ensure record has creation date to avoid rendering bad data
-                return <tr key={row.number}><RenderCells key={row.number + Math.random()} data={row} columns={columns}/></tr>
+                return <tr className="data-table__row" key={row.number}><RenderCells key={row.number + Math.random()} data={row} columns={columns}/></tr>
             }
         })
     }
 
         return(
-            <table>
+            <table className="data-table">
                 <thead>
-                    <tr>
+                    <tr className="data-table__header-row">
                     {setHeader()}
-                    </tr>    
+                    </tr>   
                 </thead>
                 <tbody>
                     {RenderRows()}

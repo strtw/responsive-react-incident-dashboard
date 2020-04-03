@@ -70,15 +70,17 @@ class Dashboard extends Component{
                          <h4>{this.state.filteredBy}
                             <span>{this.state.filteredBy == "All Incidents" ? this.state.incidents.length : this.state[this.state.filteredBy]}</span>
                          </h4>
-                        <DataTable data={this.filterIncidents()}
-                            columnMap={{
-                                "number":"Number",
-                                "priority":"Priority",
-                                "short_description":"Short description",
-                                "category":"Category",
-                                "state":"State",
-                                "sys_created_on":"Created"
-                           }}/>
+                         <div className="data-table__container">
+                            <DataTable data={this.filterIncidents()}
+                                columnMap={{
+                                    "number":"Number",
+                                    "priority":"Priority",
+                                    "short_description":"Short description",
+                                    "category":"Category",
+                                    "state":"State",
+                                    "sys_created_on":"Created"
+                            }}/>
+                        </div>
                      </div>
                 </div>
             )
