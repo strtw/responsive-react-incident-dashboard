@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Card from './Card.js'
 import DataTable from './DataTable.js'
+import IsLoading from './IsLoading.js'
 import {fetchIncidents} from '../utils/dataTransfer'
 
 class Dashboard extends Component{
@@ -54,36 +55,57 @@ class Dashboard extends Component{
     }
 
     componentDidMount(){
-      this.fetchIncidents(this.setIncidentCountByType);
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+          }
+          delay(1500).then(() => this.fetchIncidents(this.setIncidentCountByType));
     }
     render(){
-       // const width = 
-        if(this.state.isLoading){
-           return(
-             <div>Loading...</div>
-           ) 
-        }else{
+        const { data, isLoading } = this.state;
+        const loadingText = 'Loading..';
             return(
                 <div className="dashboard">
+                    <>
+                    {this.state.fetchError ?<h1>Error fetching data, please contact site administrator</h1> : <></>}
+                    </>  
                     <h5 className="dashboard__subheader">At A Glance</h5>
                     <div className="dashboard__cards">
                         <div className="card__container">
-                            <Card title={"All Incidents"} value={this.state.incidents.length} onClick={(event) => this.handleClick(event)}/>
+                        {isLoading ? 
+                        <Card title={loadingText} value={<IsLoading/>}/> :
+                        <Card title={"All Incidents"} value={this.state.incidents.length} onClick={(event) => this.handleClick(event)}/>
+                        }
                         </div>
                         <div className="card__container">
-                            <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event) }/>
+                        {isLoading ? 
+                        <Card title={loadingText} value={<IsLoading/>}/> :
+                        <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event) }/>     
+                        }
+                            
                         </div>
                         <div className="card__container">
-                             <Card title={"In Progress"} value={this.state['In Progress']} onClick={(event) => this.handleClick(event)}/>
+                        {isLoading ? 
+                        <Card title={loadingText} value={<IsLoading/>}/> :
+                        <Card title={"In Progress"} value={this.state['In Progress']} onClick={(event) => this.handleClick(event)}/>
+                        }    
                         </div>
                         <div className="card__container">
-                            <Card title={"Resolved"} value={this.state['Resolved']} onClick={(event) => this.handleClick(event)} />
+                        {isLoading ? 
+                        <Card title={loadingText} value={<IsLoading/>}/> :
+                        <Card title={"Resolved"} value={this.state['Resolved']} onClick={(event) => this.handleClick(event)} />
+                        }  
                         </div>
                         <div className="card__container">
-                            <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)} />
+                        {isLoading ? 
+                        <Card title={loadingText} value={<IsLoading/>}/> :
+                        <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)} />
+                         } 
                         </div>
                      </div>
                      <div className="data-table-container">
+                     {!isLoading && this.state.incidents.length == 0 ?<h1>No data returned from server</h1> : <></>}
+                     {isLoading ? <div className="loading-canvas"><IsLoading/></div>: 
+                        <>
                          <h5 className="dashboard__filter-summary">{this.state.filteredBy}
                             <span className="dashboard__filter-summary-count">{this.state.filteredBy == "All Incidents" ? this.state.incidents.length : this.state[this.state.filteredBy]}</span>
                          </h5>
@@ -98,12 +120,13 @@ class Dashboard extends Component{
                                     "sys_created_on":"Created"
                             }}/>
                         </div>
+                        </>
+                    }
                      </div>
                 </div>
             )
         }
             
     }
-}
 
 export default Dashboard;

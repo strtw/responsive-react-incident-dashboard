@@ -1,5 +1,6 @@
 import {baseUrl} from '../shared/baseUrl';
 
+
 export function fetchIncidents (callback){
     return fetch(baseUrl + 'incidents')
         .then(response => {//response from server
@@ -17,5 +18,5 @@ export function fetchIncidents (callback){
         })
         .then(response => response.json())
         .then(incidents => this.setState({incidents:incidents, isLoading:false},callback) )
-        .catch(error => console.log(error.message))
+        .catch(error => this.setState({fetchError:error.message}))
 }
