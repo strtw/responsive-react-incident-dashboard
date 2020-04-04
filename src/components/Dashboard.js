@@ -37,10 +37,6 @@ class Dashboard extends Component{
         if(card){
             var cardType = event.currentTarget.querySelector(".card__title").innerHTML;
             this.setState({filteredBy:cardType});
-            var cards = document.querySelectorAll('.card');
-            cards.forEach((card)=> card.classList.remove("card--active"));
-            event.currentTarget.classList.add("card--active");
-
         }
     }
 
@@ -73,32 +69,34 @@ class Dashboard extends Component{
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"All Incidents"} value={this.state.incidents.length} onClick={(event) => this.handleClick(event)}/>
+                        <Card title={"All Incidents"} value={this.state.incidents.length} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
                         }
                         </div>
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"Open"} value={this.state['Open']} onClick={(event) => this.handleClick(event) }/>     
+                        <Card title={"Open"} value={this.state['Open']} 
+                            filteredBy={this.state.filteredBy} 
+                            onClick={(event) => this.handleClick(event)}/>     
                         }
                             
                         </div>
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"In Progress"} value={this.state['In Progress']} onClick={(event) => this.handleClick(event)}/>
+                        <Card title={"In Progress"} value={this.state['In Progress']} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
                         }    
                         </div>
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"Resolved"} value={this.state['Resolved']} onClick={(event) => this.handleClick(event)} />
+                        <Card title={"Resolved"} value={this.state['Resolved']} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)} />
                         }  
                         </div>
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"Closed"} value={this.state['Closed']} onClick={(event) => this.handleClick(event)} />
+                        <Card title={"Closed"} value={this.state['Closed']} filteredBy={this.state.filteredBy}onClick={(event) => this.handleClick(event)} />
                          } 
                         </div>
                      </div>
