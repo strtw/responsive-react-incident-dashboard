@@ -1,23 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Running:
+### Run the server
+
+The API for this project can be found
+[here](https://github.com/jvillagomez/ServiceNowCodingChallenge). To make it available to the incident dashboard, clone the repository and run `npm install` then `npm start`. This will set the server endpoint to port 3000.
+
+
+### Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+`yarn start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8082](http://localhost:8082) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
+ `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+`yarn build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -37,32 +43,67 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Card** 
 
-### Code Splitting
+Displays a card with title and value 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Usage: 
+`<Card/>`
 
-### Analyzing the Bundle Size
+Properties:
+- ***title*** - Card title
+- ***value*** - Card value
+- ***width*** - if unset defaults to 100%
+- ***to***  - optional, determines if card will pass React Router's `to` attribute to enable card to serve at React Router Link
+- ***linkStyle*** - Accepts styling that would appy to link tags (`<a>`)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+**DataTable** 
 
-### Making a Progressive Web App
+Displays a columnar zebra table
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Usage: 
+`<DataTable/>`
 
-### Advanced Configuration
+Properties:
+- ***data*** - JSON data in following format:
+    ```JSON [
+  {
+    "first_name_data": "John",
+    "last_name_data": "Smith",
+    "age":25
+  },
+  {
+   "first_name_data": "Mary",
+   "last_name_data": "Martin",
+    "age":42
+  }
+    ]```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+    outputs:
 
-### Deployment
+    | first_name_data | last_name_data | age |
+    |-----------------|----------------|------
+    | John            | Smith          | 25
+    | Mary            | Martin         | 42
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- ***columnMap*** - Returns columns in order defined. Columns that don't contain a key:value as passed in this prop won't be rendered even if they exist in the JSON passed in the `data` prop. Custom column names can be indicated. 
 
-### `yarn build` fails to minify
+```JSX 
+columnMap={{
+    {/*First column, no custom name*/}
+    "last_name_data":"last_name_data", 
+    {/*Second column, custom name */}
+    "first_name_data":"First Name", 
+    }}/>
+    {/*Age column will not be in output even though it exists in JSON*/}
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+    outputs:
+
+    | last_name_data | First Name|
+    |----------------|-----------|
+    | Smith          | John      |
+    | Martin         | Mary      |
