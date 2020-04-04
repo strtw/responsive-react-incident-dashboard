@@ -12,3 +12,5 @@ export default function Card(props){
        </Link>
     )
 }
+
+console.log("test");
