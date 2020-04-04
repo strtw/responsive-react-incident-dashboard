@@ -15,7 +15,7 @@ class Dashboard extends Component{
             'In Progress':null,
             'Resolved':null,
             'Closed':null,
-            filteredBy:"All Incidents"
+            filteredBy:this.props.filter
         }
         this.fetchIncidents = fetchIncidents.bind(this);
     }
@@ -38,7 +38,6 @@ class Dashboard extends Component{
         if(card){
             var cardType = event.currentTarget.querySelector(".card__title").innerHTML;
             this.setState({filteredBy:cardType});
-            this.setState({urlSlug:'/all-incidents'});
         }
     }
 
@@ -74,7 +73,7 @@ class Dashboard extends Component{
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/> }/> :
-                        <Card to={this.state.urlSlug} title={"All Incidents"} value={this.state.incidents.length} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
+                        <Card to={'/'} title={"All Incidents"} value={this.state.incidents.length} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
                         }
                         </div>
                         <div className="card__container">

@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './global.scss';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Dashboard from './components/Dashboard.js';
 
 function App() {
@@ -10,7 +10,13 @@ function App() {
       <header className="App-header">
       </header>
       <BrowserRouter>
-        <Dashboard/>
+        <Switch>
+          <Route exact path="/" component={()=><Dashboard filter={"All Incidents"}/>}/>
+          <Route path="/open" component={()=> <Dashboard filter={"Open"}/>}/>
+          <Route path="/in-progress" component={()=> <Dashboard filter={"In Progress"}/>}/>
+          <Route path="/closed" component={()=> <Dashboard filter={"Closed"}/>}/>
+          <Route path="/resolved" component={()=> <Dashboard filter={"Resolved"}/>}/>
+        </Switch>
       </BrowserRouter>
     </div>
   );
