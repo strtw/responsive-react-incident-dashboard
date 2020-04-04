@@ -35,6 +35,10 @@ body{
   width:100%;
 }
 
+.card--active{
+  box-shadow: 1px 0px 12px 1px rgba(66,130,99,1);
+}
+
 .card__divider{
   border-top: 1px solid rgba(0,0,0,.125);
   width:95%;

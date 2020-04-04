@@ -32,9 +32,14 @@ class Dashboard extends Component{
     }
 
     handleClick(event){
-        if(event.currentTarget.getElementsByClassName(".card")){
+        var card = event.currentTarget.getElementsByClassName(".card")
+        if(card){
             var cardType = event.currentTarget.querySelector(".card__title").innerHTML;
-            this.setState({filteredBy:cardType})
+            this.setState({filteredBy:cardType});
+            var cards = document.querySelectorAll('.card');
+            cards.forEach((card)=> card.classList.remove("card--active"));
+            event.currentTarget.classList.add("card--active");
+
         }
     }
 
