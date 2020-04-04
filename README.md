@@ -44,7 +44,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 
-# Components
+# Components:
 
 **Card** 
 
@@ -107,3 +107,19 @@ columnMap={{
     |----------------|-----------|
     | Smith          | John      |
     | Martin         | Mary      |
+
+
+# Tools Used:
+
+Prettier for code formatting
+
+ESLint for linting
+
+lint-staged NPM package to set-up pre-commit hook to apply Prettier and ESLint
+
+Create-react-app to set-up project template
+
+React Router to set up page routing
+
+node-sass for Sass support
+
