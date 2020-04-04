@@ -3,6 +3,7 @@ import Card from './Card.js'
 import DataTable from './DataTable.js'
 import IsLoading from './IsLoading.js'
 import {fetchIncidents} from '../utils/dataTransfer'
+import {Link, Route, BrowserRouter, Switch} from 'react-router-dom';
 
 class Dashboard extends Component{
     constructor(props){
@@ -37,6 +38,7 @@ class Dashboard extends Component{
         if(card){
             var cardType = event.currentTarget.querySelector(".card__title").innerHTML;
             this.setState({filteredBy:cardType});
+            this.setState({urlSlug:'/all-incidents'});
         }
     }
 
@@ -56,10 +58,13 @@ class Dashboard extends Component{
           }
           delay(1500).then(() => this.fetchIncidents(this.setIncidentCountByType));
     }
+
+ 
     render(){
         const { data, isLoading } = this.state;
         const loadingText = 'Loading..';
-            return(
+            return( 
+          
                 <div className="dashboard">
                     <>
                     {this.state.fetchError ?<h1>Error fetching data, please contact site administrator</h1> : <></>}
@@ -68,14 +73,14 @@ class Dashboard extends Component{
                     <div className="dashboard__cards">
                         <div className="card__container">
                         {isLoading ? 
-                        <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"All Incidents"} value={this.state.incidents.length} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
+                        <Card title={loadingText} value={<IsLoading/> }/> :
+                        <Card to={this.state.urlSlug} title={"All Incidents"} value={this.state.incidents.length} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
                         }
                         </div>
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"Open"} value={this.state['Open']} 
+                        <Card to={'/open'} title={"Open"} value={this.state['Open']} 
                             filteredBy={this.state.filteredBy} 
                             onClick={(event) => this.handleClick(event)}/>     
                         }
@@ -84,19 +89,19 @@ class Dashboard extends Component{
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"In Progress"} value={this.state['In Progress']} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
+                        <Card to={'/in-progress'} title={"In Progress"} value={this.state['In Progress']} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)}/>
                         }    
                         </div>
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"Resolved"} value={this.state['Resolved']} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)} />
+                        <Card to={'/resolved'} title={"Resolved"} value={this.state['Resolved']} filteredBy={this.state.filteredBy} onClick={(event) => this.handleClick(event)} />
                         }  
                         </div>
                         <div className="card__container">
                         {isLoading ? 
                         <Card title={loadingText} value={<IsLoading/>}/> :
-                        <Card title={"Closed"} value={this.state['Closed']} filteredBy={this.state.filteredBy}onClick={(event) => this.handleClick(event)} />
+                        <Card to={'/closed'} title={"Closed"} value={this.state['Closed']} filteredBy={this.state.filteredBy}onClick={(event) => this.handleClick(event)} />
                          } 
                         </div>
                      </div>
@@ -126,5 +131,7 @@ class Dashboard extends Component{
         }
             
     }
+
+    
 
 export default Dashboard;
