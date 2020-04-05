@@ -19,7 +19,7 @@ class Dashboard extends Component {
     this.fetchIncidents = fetchIncidents.bind(this);
   }
 
-  setStateCount(stateType) {
+  setIncidentStateCount(stateType) {
     var stateArray = this.state.incidents.filter(
       (incident) => incident.state === stateType
     );
@@ -28,13 +28,13 @@ class Dashboard extends Component {
   }
 
   setIncidentCountByType() {
-    this.setStateCount("Open", "Open");
-    this.setStateCount("In Progress", "In Progress");
-    this.setStateCount("Resolved", "Resolved");
-    this.setStateCount("Closed", "Closed");
+    this.setIncidentStateCount("Open");
+    this.setIncidentStateCount("In Progress");
+    this.setIncidentStateCount("Resolved");
+    this.setIncidentStateCount("Closed");
   }
 
-  handleClick(event) {
+  handleCardClick(event) {
     var card = event.currentTarget.getElementsByClassName(".card");
     if (card) {
       var cardType = event.currentTarget.querySelector(".card__title")
@@ -56,6 +56,8 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    //TODO https://www.reddit.com/r/reactjs/comments/992yyy/react_router_not_rerendering_components/
+    //Fix loading delay between card clicks
     function delay(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
@@ -85,7 +87,7 @@ class Dashboard extends Component {
                 title={"All Incidents"}
                 value={this.state.incidents.length}
                 filteredBy={this.state.filteredBy}
-                onClick={(event) => this.handleClick(event)}
+                onClick={(event) => this.handleCardClick(event)}
               />
             )}
           </div>
@@ -98,7 +100,7 @@ class Dashboard extends Component {
                 title={"Open"}
                 value={this.state["Open"]}
                 filteredBy={this.state.filteredBy}
-                onClick={(event) => this.handleClick(event)}
+                onClick={(event) => this.handleCardClick(event)}
               />
             )}
           </div>
@@ -111,7 +113,7 @@ class Dashboard extends Component {
                 title={"In Progress"}
                 value={this.state["In Progress"]}
                 filteredBy={this.state.filteredBy}
-                onClick={(event) => this.handleClick(event)}
+                onClick={(event) => this.handleCardClick(event)}
               />
             )}
           </div>
@@ -124,7 +126,7 @@ class Dashboard extends Component {
                 title={"Resolved"}
                 value={this.state["Resolved"]}
                 filteredBy={this.state.filteredBy}
-                onClick={(event) => this.handleClick(event)}
+                onClick={(event) => this.handleCardClick(event)}
               />
             )}
           </div>
@@ -137,7 +139,7 @@ class Dashboard extends Component {
                 title={"Closed"}
                 value={this.state["Closed"]}
                 filteredBy={this.state.filteredBy}
-                onClick={(event) => this.handleClick(event)}
+                onClick={(event) => this.handleCardClick(event)}
               />
             )}
           </div>
