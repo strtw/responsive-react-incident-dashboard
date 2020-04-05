@@ -59,7 +59,7 @@ class Dashboard extends Component {
     function delay(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
-    delay(1500).then(() => this.fetchIncidents(this.setIncidentCountByType));
+    delay(500).then(() => this.fetchIncidents(this.setIncidentCountByType));
   }
 
   render() {
