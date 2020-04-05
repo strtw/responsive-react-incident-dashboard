@@ -1,10 +1,9 @@
-
 # Running:
+
 ### Run the server
 
 The API for this project can be found
 [here](https://github.com/jvillagomez/ServiceNowCodingChallenge). To make it available to the incident dashboard, clone the repository and run `npm install` then `npm start`. This will set the server endpoint to port 3000.
-
 
 ### Available Scripts
 
@@ -18,7 +17,7 @@ Open [http://localhost:8082](http://localhost:8082) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
- `yarn test`
+`yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
@@ -43,60 +42,64 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-
 # Components:
 
-**Card** 
+**Card**
 
-Displays a card with title and value 
+Displays a card with title and value
 
-Usage: 
+Usage:
 `<Card/>`
 
 Properties:
-- ***title*** - Card title
-- ***value*** - Card value
-- ***width*** - if unset defaults to 100%
-- ***to***  - optional, determines if card will pass React Router's `to` attribute to enable card to serve at React Router Link
-- ***linkStyle*** - Accepts styling that would appy to link tags (`<a>`)
 
-**DataTable** 
+- **_title_** - Card title
+- **_value_** - Card value
+- **_width_** - if unset defaults to 100%
+- **_to_** - optional, determines if card will pass React Router's `to` attribute to enable card to serve at React Router Link
+- **_linkStyle_** - Accepts styling that would appy to link tags (`<a>`)
+
+**DataTable**
 
 Displays a columnar zebra table
 
-Usage: 
+Usage:
 `<DataTable/>`
 
 Properties:
-- ***data*** - JSON data in following format:
-    ```JSON [
+
+- **_data_** - JSON data in following format:
+
+  ````JSON [
   {
-    "first_name_data": "John",
-    "last_name_data": "Smith",
-    "age":25
+  "first_name_data": "John",
+  "last_name_data": "Smith",
+  "age":25
   },
   {
-   "first_name_data": "Mary",
-   "last_name_data": "Martin",
-    "age":42
+  "first_name_data": "Mary",
+  "last_name_data": "Martin",
+  "age":42
   }
-    ]```
+  ]```
 
-    outputs:
+  outputs:
 
-    | first_name_data | last_name_data | age |
-    |-----------------|----------------|------
-    | John            | Smith          | 25
-    | Mary            | Martin         | 42
+  | first_name_data | last_name_data | age |
+  |-----------------|----------------|------
+  | John            | Smith          | 25
+  | Mary            | Martin         | 42
 
-- ***columnMap*** - Returns columns in order defined. Columns that don't contain a key:value as passed in this prop won't be rendered even if they exist in the JSON passed in the `data` prop. Custom column names can be indicated. 
+  ````
 
-```JSX 
+- **_columnMap_** - Returns columns in order defined. Columns that don't contain a key:value as passed in this prop won't be rendered even if they exist in the JSON passed in the `data` prop. Custom column names can be indicated.
+
+```JSX
 columnMap={{
     {/*First column, no custom name*/}
-    "last_name_data":"last_name_data", 
+    "last_name_data":"last_name_data",
     {/*Second column, custom name */}
-    "first_name_data":"First Name", 
+    "first_name_data":"First Name",
     }}/>
     {/*Age column will not be in output even though it exists in JSON*/}
 ```
@@ -107,7 +110,6 @@ columnMap={{
     |----------------|-----------|
     | Smith          | John      |
     | Martin         | Mary      |
-
 
 # Tools Used:
 
@@ -123,3 +125,6 @@ React Router to set up page routing
 
 node-sass for Sass support
 
+# Branches
+
+loadError and emptyResponse branches demonstrate a failed server response and empty data response, respectively.
