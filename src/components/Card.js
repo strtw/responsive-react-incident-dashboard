@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Card(props) {
-  console.log(props.to);
   return (
     <Link
       to={props.to ? props.to : "#"}
