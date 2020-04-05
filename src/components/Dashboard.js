@@ -45,7 +45,7 @@ class Dashboard extends Component {
 
   filterIncidents() {
     var result;
-    if (this.state.filteredBy == "All Incidents") {
+    if (this.state.filteredBy === "All Incidents") {
       result = this.state.incidents;
     } else {
       result = this.state.incidents.filter(
@@ -145,7 +145,7 @@ class Dashboard extends Component {
           </div>
         </div>
         <div className="data-table-container">
-          {!isLoading && this.state.incidents.length == 0 ? (
+          {!isLoading && this.state.incidents.length === 0 ? (
             <h1>No data returned from server</h1>
           ) : (
             <></>
@@ -159,7 +159,7 @@ class Dashboard extends Component {
               <h5 className="dashboard__filter-summary">
                 {this.state.filteredBy}
                 <span className="dashboard__filter-summary-count">
-                  {this.state.filteredBy == "All Incidents"
+                  {this.state.filteredBy === "All Incidents"
                     ? this.state.incidents.length
                     : this.state[this.state.filteredBy]}
                 </span>
