@@ -9,6 +9,8 @@ The API for this project can be found
 
 In the project directory, you can run:
 
+`yarn install` - to install project dependencies
+
 `yarn start`
 
 Runs the app in the development mode.<br />
