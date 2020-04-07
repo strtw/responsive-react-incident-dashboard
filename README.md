@@ -1,9 +1,8 @@
+# Live Demo
+
+http://incidents.surge.sh/
+
 # Running:
-
-### Run the server
-
-The API for this project can be found
-[here](https://github.com/jvillagomez/ServiceNowCodingChallenge). To make it available to the incident dashboard, clone the repository and run `npm install` then `npm start`. This will set the server endpoint to port 3000.
 
 ### Available Scripts
 
