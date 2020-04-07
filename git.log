@@ -1,0 +1,52 @@
+* c28e145 : Update docs to include Yarn installation
+* 1597c9a : Remove console.log statement
+* ebcbc03 : Fix non-critical console errors and warnings
+* f964c89 : Rename functions for readability, add comments
+* e5fb396 : Reduce loading delay between card clicks to account for bug introduced by implementation of React Router Link
+* d66f4c5 : Remove extraneous imports
+* dc37002 : Update docs to reflect addition of error branches
+* 170b99d : Add .eslintcache to .gitignore
+* b03a5c7 : Save devDependency for Prettier and ESLint & test pre-commit hook
+* afe9c10 : Test precommit hook
+* 1a7e899 : Add documentation for external tools used
+* 0353a2d : Add documentation for Card and DataTable
+* 1ec3dda : Update meta data
+* 6900555 : Format prettier files
+* 3c9e4f2 : Update routing to pass in filter state on url change from url bar
+* acc763c : Add react router & implement routingon Card click
+* 4e0f007 : Update Card to include prop to set active css state, and implement in dashboard
+* 1b5b2a5 : Update dashboard with error and response time handling
+* 9dacf14 : Add highlighting to clicked card as visual affordance
+* e065bbc : add spacing below DataTable container
+* 5023063 : Add sticky header and header border to DataTable
+* d4219b4 : Updated DataTable container viewheight
+* c8c613d : Update Card container so layout is updated at breakpoints
+* cf323a7 : Resize data table container for better responsiveness
+* 8200ff8 : Add SASS support to project
+* 0f377eb : Add width prop for Card component to add custom widths, Add card container class to handle sizing card widths responsively
+* 1563501 : Added vertical scrolling to data table to maintain constant page height
+* fe9ec6e : Highlight first column of data table
+*   a0e2c2f : Merge branch 'dashboardStyle'
+|\  
+| * 7f63847 : Adjust margins, add style to dashboard filter summary
+* | ee3ae34 : Set table layout to fixed to maintain column widths on differnt filter views"
+|/  
+*   c0a5c21 : Merge branch 'styleDataTable'
+|\  
+| * 29bcf57 : Added zebra styling to DataTable, and styled header row
+* | d524660 : fixed className bug
+|/  
+* a5ddbe6 : Added global font and background color
+* 9f6f252 : Add styling to Card component
+* 8bf0066 : Add 'All Incidents' Card to reflect unfiltered state of app
+* 41d67e7 : Add DataTable filtering on Card click
+* a9f7ac1 : Update DataTable component and added isLoading feature skeleton
+* e86dd5d : Update dashboard with Card counts by state type Update dataTransfer.js fetchIncidents function to remove arrow convention so that its 'this' value can be bound to calling component
+* 0f38ecb : Add util function to get incident data, and updated Dashboard to include this data to its state on mount
+* 50fde5f : Add baseurl for incident server
+* ade38a6 : Add Cards to dashboard
+* 518182e : Add cards to dashboard and dashboard to app
+* 090f80d : Add Card component and basic styling
+* e41ac3b : Add initial components and remove starter template markup
+* ce3278f : Add .env file to set default app port to 8082
+* c7e800a : Initialize project using Create React App

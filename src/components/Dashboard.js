@@ -3,13 +3,14 @@ import Card from "./Card.js";
 import DataTable from "./DataTable.js";
 import IsLoading from "./IsLoading.js";
 import { fetchIncidents } from "../utils/dataTransfer";
+import { PLANTS } from "../shared/data.js";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
-      incidents: null,
+      isLoading: false,
+      incidents: PLANTS,
       Open: null,
       "In Progress": null,
       Resolved: null,
@@ -58,10 +59,11 @@ class Dashboard extends Component {
   componentDidMount() {
     //TODO https://www.reddit.com/r/reactjs/comments/992yyy/react_router_not_rerendering_components/
     //Fix loading delay between card clicks
-    function delay(ms) {
+    /* function delay(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-    delay(500).then(() => this.fetchIncidents(this.setIncidentCountByType));
+    }*/
+    // delay(500).then(() => this.fetchIncidents(this.setIncidentCountByType));
+    this.setIncidentCountByType();
   }
 
   render() {
