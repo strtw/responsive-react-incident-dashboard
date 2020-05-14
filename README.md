@@ -3,7 +3,7 @@
 
 http://incidents.surge.sh/
 
-I built this project as an exercise in building responsive React components that could be used, for instance in a UI component library. The two main components are [Card]([#card) which provides status information for the data table, and [DataTable](#datatable) which presents JSON data in a zebra table. I opted to implement all the UI features myself without using any component libraries with the exception of React Router. 
+I built this project as an exercise in building responsive React components that could be used, for instance in a UI component library. The two main components are Card which provides status information for the data table, and DataTable which presents JSON data in a zebra table. I opted to implement all the UI features myself without using any component libraries with the exception of React Router. 
 
 ##### If I decide to spend more time on this project here's what I would do next:
 
