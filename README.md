@@ -1,8 +1,34 @@
-# Live Demo
+## React Incident Dashboard
+##### Live Demo
 
 http://incidents.surge.sh/
 
-# Running:
+I built this project as an exercise in building responsive React components that could be used, for instance in a UI component library. The two main components are [Card]([#card) which provides status information for the data table, and [DataTable](#datatable) which presents JSON data in a zebra table. I opted to implement all the UI features myself without using any component libraries with the exception of React Router. 
+
+##### If I decide to spend more time on this project here's what I would do next:
+
+- Modify dashboard so that it was more flexible, adding props for different card types, server location, and column mapping
+- Add ability to sort columns 
+- Perhaps add some kind of visual mapping between the card color and the summary indicator to tie more clearly that the data table has been updated on click. For instance, clicking between “All incidents” and “Open” displays the similar data and isn’t immediately apparent the data has changed. 
+- Break out Sass into SCSS partials for each component styling
+- Add version that removes 'All Incidents' card and attempts a design with a "Show all incidents" link. I like the UX of including the "All incidents" card but the 5 card view doesn't look too appealing on smaller screens when the cards are stacked. 
+- Fix the bug that occurs when clicking between two cards when the loading delay is removed. It has to do with something similar to [this issue](https://www.reddit.com/r/reactjs/comments/992yyy/react_router_not_rerendering_components/) I originally created the app without react router, but decided that because the Coding Test documentation mentioned 'pages' explicitly I should implement them. From a user perspective it's nice also because users could bookmark 'pages' by incident type. Before adding React Router, I added a delay in between clicking the cards to demonstrate page loading, so I didn't notice the bug until I removed the delay. 
+- Fix issue where .eslintcache file isn't being ignored by .gitignore
+
+
+## Tools Used:
+
+- Prettier / ESLint precommit hook for code formatting and linting via lint-staged NPM package
+
+- Create-react-app to set-up project template
+
+- React Router to set up page routing
+
+- node-sass for Sass support
+
+
+
+## Running:
 
 ### Available Scripts
 
@@ -43,9 +69,9 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-# Components:
+## Components:
 
-**Card**
+#### **Card**
 
 Displays a card with title and value
 
@@ -60,9 +86,9 @@ Properties:
 - **_to_** - optional, determines if card will pass React Router's `to` attribute to enable card to serve at React Router Link
 - **_linkStyle_** - Accepts styling that would appy to link tags (`<a>`)
 
-**DataTable**
+#### **DataTable**
 
-Displays a columnar zebra table
+Displays a columnar zebra table. 
 
 Usage:
 `<DataTable/>`
@@ -112,20 +138,7 @@ columnMap={{
     | Smith          | John      |
     | Martin         | Mary      |
 
-# Tools Used:
 
-Prettier for code formatting
-
-ESLint for linting
-
-lint-staged NPM package to set-up pre-commit hook to apply Prettier and ESLint
-
-Create-react-app to set-up project template
-
-React Router to set up page routing
-
-node-sass for Sass support
-
-# Branches
+## Branches
 
 loadError and emptyResponse branches demonstrate a failed server response and empty data response, respectively.
